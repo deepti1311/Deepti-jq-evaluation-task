@@ -23,6 +23,7 @@
       <div class="col-md-3">
 
         <label class="asterick" for="name">Name :</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" id="fname" name="fname" size="40%" class="form-input">
         <!-- <p id="p1"></p> -->
 
@@ -36,6 +37,7 @@
       <div class="col-md-3">
 
         <label class="asterick" for="name">Age :</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="number" id="age" name="age" min='18' max='25' size="40%" class="form-input">
         <!-- <p id="p1"></p> -->
 
@@ -50,7 +52,7 @@
     <div class="rows ">
       <div class="col-md-3">
         <label class="asterick">E-mail :</label>
-
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" id="email" name="email" size="40%" class="form-input" placeholder="abc@tntra.io">
         <!-- <p id="p9"></p> -->
 
@@ -63,9 +65,10 @@
 
     <div class="rows ">
       <div class="col-md-3">
-        <label class="asterick">Phone Number :</label>
+        <label class="asterick" for="telNo">Phone Number :</label>
         <!-- <div class="grp left"> -->
-        <input type="tel" id="phone" name="phone" size="40%" class="form-input" placeholder="(000) 0000-000">
+        <input type="tel" id="phone" name="phone" maxlength='10' size="40%" class="form-input"
+          placeholder="(000) 0000-000" />
         <!-- <p id="p8"></p> -->
 
 
@@ -76,8 +79,10 @@
     <div class="rows ">
       <div class="col-md-3">
 
-        <legend class="gender" name="Gender" id="Gender">
-          Gender :
+        <legend class="gender " name="Gender" id="Gender">
+
+          <!-- Gender :  -->
+          <label class="asterick">Gender :</label>
           <input type="radio" id="gender" name="gender" value="male">
           <label for="male">Male</label>
 
@@ -85,7 +90,7 @@
           <label for="female">Female</label>
 
           <input type="radio" id="gender" name="gender" value="Other">
-          <label for="other"> Other</label>
+          <label for="other" id="other1"> Other</label>
 
           <!-- <label><input type="radio" name="genderTest" value="Other" style="visibility:hidden;">
   </label> -->
@@ -101,10 +106,10 @@
 
     <br>
 
-    <div>
+    <div class="container">
       <div class="rows ">
         <input type="checkbox" id="Day" name="Day" value="Day">
-        <label for="Day"><b>NEXT-DAY CONFIGURATION </b><label id="cb"> </label><br>
+        <label for="Day"><b class="asterick">NEXT-DAY CONFIGURATION </b><label id="cb"> </label><br>
           <a>set Next-day Pick-up time</a>
         </label>
         <!-- <label id="cb"></label> -->
@@ -125,7 +130,7 @@
           <div class="col-4"> -->
 
             <select name="sun" id="sun">
-              <option value="" name="sun" selected="selected">-Select Pick-Up Time-</option>
+              <option value="none" selected="selected">-Select Pick-Up Time-</option>
               <option value="00.00">00.00</option>
               <option value="01.00">01.00</option>
               <option value="02.00">02.00</option>
@@ -170,8 +175,8 @@
 
             <!-- </div>
           <div class="col-4"> -->
-            <select name="mon" id="mon">
-              <option value="" name="mon" selected="selected">-Select Pick-Up Time-</option>
+            <select name="mon" id="mon" selected="selected" placeholder="-Select Pick-Up Time-">
+              <option value="none">-Select Pick-Up Time-</option>
               <option value="00.00">00.00</option>
               <option value="01.00">01.00</option>
               <option value="02.00">02.00</option>
@@ -216,7 +221,7 @@
             <!-- </div>
           <div class="col-3"> -->
             <select name="tue" id="tue">
-              <option value="" name="tue" selected="selected">-Select Pick-Up Time-</option>
+              <option value="none" name="tue" selected="selected">-Select Pick-Up Time-</option>
               <option value="00.00">00.00</option>
               <option value="01.00">01.00</option>
               <option value="02.00">02.00</option>
@@ -232,7 +237,7 @@
               <option value="12.00">12.00</option>
               <option value="13.00">13.00</option>
               <option value="14.00">14.00</option>
-              <option value="15.00P">15.00</option>
+              <option value="15.00">15.00</option>
               <option value="16.00">16.00</option>
               <option value="17.00">17.00</option>
               <option value="18.00">18.00</option>
@@ -262,7 +267,7 @@
             <!-- </div>
         <div class="col-4"> -->
             <select name="wed" id="wed">
-              <option value="" name="wed" selected="selected">-Select Pick-Up Time-</option>
+              <option value="none" name="wed" selected="selected">-Select Pick-Up Time-</option>
               <option value="00.00">00.00</option>
               <option value="01.00">01.00</option>
               <option value="02.00">02.00</option>
@@ -307,7 +312,7 @@
             <!-- </div>
           <div class="col-4"> -->
             <select name="thu" id="thu">
-              <option value="" name="thu" selected="selected">-Select Pick-Up Time-</option>
+              <option value="none" name="thu" selected="selected">-Select Pick-Up Time-</option>
               <option value="00.00">00.00</option>
               <option value="01.00">01.00</option>
               <option value="02.00">02.00</option>
@@ -354,7 +359,7 @@
             <!-- </div>
           <div class="col-4"> -->
             <select name="fri" id="fri">
-              <option value="" name="fri" selected="selected">-Select Pick-Up Time-</option>
+              <option value="none" name="fri" selected="selected">-Select Pick-Up Time-</option>
               <option value="00.00">00.00</option>
               <option value="01.00">01.00</option>
               <option value="02.00">02.00</option>
@@ -400,7 +405,7 @@
             <!-- </div>
           <div class="col-4"> -->
             <select name="sat" id="sat">
-              <option value="" name="sat" selected="selected">-Select Pick-Up Time-</option>
+              <option value="none" name="sat" selected="selected">-Select Pick-Up Time-</option>
               <option value="00.00">00.00</option>
               <option value="01.00">01.00</option>
               <option value="02.00">02.00</option>
@@ -451,6 +456,7 @@
   </form>
 
   <script src="../js/test-form.js"></script>
+
 
 </body>
 

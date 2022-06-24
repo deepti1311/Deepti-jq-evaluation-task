@@ -1,100 +1,143 @@
 $(document).ready(function () {
-  $("#form").click(function (event) {
-    $("#form").validate({
-      rules: {
-        fname: {
-          required: true,
-          minlength: 3,
-          onlytext: true,
-        },
-
-        age: {
-          required: true,
-          maxlength: 2,
-          min: 18,
-          max: 25,
-          age: true,
-        },
-
-        phone: {
-          required: true,
-          maxlength: 10,
-          phone: true,
-        },
-
-        email: {
-          required: true,
-          email: true,
-          mail: true,
-        },
-
-        gender: { required: true },
-        Day: { required: true },
-        sun: { required: true },
-        mon: { required: true },
-        tue: { required: true },
-        wed: { required: true },
-        thu: { required: true },
-        fri: { required: true },
-        sat: { required: true },
+  // $("#form").click(function (event) {
+  $("#form").validate({
+    rules: {
+      fname: {
+        required: true,
+        minlength: 3,
+        onlytext: true,
       },
 
-      messages: {
-        fname: {
-          required: "enter name ",
-          minlength: "Name should be at least 3 characters",
-        },
-
-        age: {
-          required: "enter your age",
-          min: "enter  age between 18-25",
-          max: "enter  age between 18-25",
-          age: "age limit 18-25",
-        },
-
-        phone: {
-          required: "enter phone number ",
-          maxlength: "phone number should be at least 10 characters",
-          placeholder: "match the field",
-        },
-        email: {
-          email: "The email should be in the format: abc@tntra.io",
-        },
-
-        gender: {
-          required: "Please select a gender",
-        },
+      age: {
+        required: true,
+        maxlength: 2,
+        min: 18,
+        max: 25,
+        age: true,
       },
 
-      // errorPlacement: function (error, element) {
-      //   // debugger
-      //   if (!$(this).element.is(":radio")) {
-      //     error.insertAfter("#genderTest");
-      //   } else {
-      //     // This is the default behavior of the script for all fields
-      //     error.insertAfter(element);
-      //   }
-      // },
-
-      errorPlacement: function (error, element) {
-        if (element.is(":checkbox")) {
-          error.insertAfter("#cb");
-        } else {
-          // This is the default behavior of the script for all fields
-          error.insertAfter(element);
-        }
+      phone: {
+        required: true,
+        // maxlength: 10,
+        // max: 10,
+        phone: true,
       },
-    });
 
-    if (
-      $("#fname").valid() &&
-      $("#age").valid() &&
-      $("#phone").valid() &&
-      $("#email").valid() &&
-      $("input[name='gender']:checked") != undefined
-    ) {
-      $("#form").submit(function (event) {
-        // event.preventDefault();
+      email: {
+        required: true,
+        email: true,
+        mail: true,
+      },
+
+      gender: { required: true },
+
+      sun: { required: true },
+      mon: { required: true },
+      tue: { required: true },
+      wed: { required: true },
+      thu: { required: true },
+      fri: { required: true },
+      sat: { required: true },
+      Day: { required: true },
+    },
+
+    messages: {
+      fname: {
+        required: "enter name ",
+        minlength: "Name should be at least 3 characters",
+      },
+
+      age: {
+        required: "enter your age",
+        min: "enter  age between 18-25",
+        max: "enter  age between 18-25",
+        age: "age limit 18-25",
+      },
+
+      phone: {
+        required: "enter phone number ",
+        // maxlength: "10 characters only",
+        // max: " 10 characters only",
+        // placeholder: "match the field",
+      },
+      email: {
+        email: "The email should be in the format: abc@tntra.io",
+      },
+
+      gender: {
+        required: "Please select a gender",
+      },
+      sun: {
+        required: "hello paras well done!!",
+      },
+    },
+
+    errorPlacement: function (error, element) {
+      if (element.is(":checkbox")) {
+        error.insertAfter("#cb");
+      } else if (element.is(":radio")) {
+        error.insertAfter("#other1");
+      } else {
+        // This is the default behavior of the script for all fields
+        error.insertAfter(element);
+      }
+    },
+  });
+
+  {
+    $("#form").submit(function (event) {
+      event.preventDefault();
+      // localStorage.clear();
+      // debugger;
+
+      if (
+        $("#sunday").is(":checked") ||
+        $("#monday").is(":checked") ||
+        $("#tuesday").is(":checked") ||
+        $("#wednesday").is(":checked") ||
+        $("#thursday").is(":checked") ||
+        $("#friday").is(":checked") ||
+        $("#saturday").is(":checked")
+      ) {
+        var flag = true;
+      } else {
+        var flag = false;
+      }
+
+      var flag2 = true;
+
+      if ($("#sunday").is(":checked") && $("#sun").val() == "none") {
+        var flag2 = false;
+      }
+      if ($("#monday").is(":checked") && $("#mon").val() == "none") {
+        var flag2 = false;
+      }
+      if ($("#tuesday").is(":checked") && $("#tue").val() == "none") {
+        var flag2 = false;
+      }
+      if ($("#wednesday").is(":checked") && $("#wed").val() == "none") {
+        var flag2 = false;
+      }
+      if ($("#thursday").is(":checked") && $("#thu").val() == "none") {
+        var flag2 = false;
+      }
+      if ($("#friday").is(":checked") && $("#fri").val() == "none") {
+        var flag2 = false;
+      }
+      if ($("#saturday").is(":checked") && $("#sat").val() == "none") {
+        var flag2 = false;
+      }
+
+      if (
+        $("#fname").valid() &&
+        $("#age").valid() &&
+        $("#phone").valid() &&
+        $("#email").valid() &&
+        $("input[name='gender']:checked") != undefined &&
+        $("#Day").valid() &&
+        flag &&
+        flag2
+      ) {
         localStorage.setItem("fname", $("#fname").val());
 
         localStorage.setItem("age", $("#age").val());
@@ -110,27 +153,25 @@ $(document).ready(function () {
         localStorage.setItem("friday", $("#fri").val());
         localStorage.setItem("saturday", $("#sat").val());
 
-        console.log(
-          fname,
-          lname,
-          age,
-          phone,
-          email,
-          gender,
-          sunday,
-          monday,
-          tuesday,
-          wednesday,
-          thursday,
-          friday,
-          saturday
-        );
+        // console.log(
+        //   fname,
+        //   age,
+        //   phone,
+        //   email,
+        //   gender,
+        //   sunday,
+        //   monday,
+        //   tuesday,
+        //   wednesday,
+        //   thursday,
+        //   friday,
+        //   saturday
+        // );
+        window.open("../htm/test-data.html");
 
         $("#disTable").append(
           "<tr><td>" +
             fname +
-            " " +
-            lname +
             "</td><td>" +
             age +
             "</td><td>" +
@@ -155,13 +196,14 @@ $(document).ready(function () {
             saturday +
             "</td></tr>"
         );
-      });
-    }
-  });
+      }
+    });
+  }
+  // });
   $.validator.addMethod(
     "onlytext",
     function (value) {
-      return /^[a-z\s]+$/.test(value);
+      return /^[a-zA-Z]+(\s{0,1}[a-zA-Z]\s{0,1})*$/.test(value);
     },
     "enter a valid input"
   );
@@ -179,7 +221,7 @@ $(document).ready(function () {
     function (value) {
       return /^\(?([7-9]{1})\)?[-. ]?([0-9]{9})$/.test(value);
     },
-    "enter valid phone number"
+    "enter valid phone number "
   );
   $.validator.addMethod(
     "mail",
@@ -188,6 +230,52 @@ $(document).ready(function () {
     },
     "enter a valid mail"
   );
+
+  $("#Day").click(cb_func);
+  cb_func();
+
+  function cb_func() {
+    if (!this.checked) {
+      document.getElementById("sunday").checked = false;
+      document.getElementById("monday").checked = false;
+      document.getElementById("tuesday").checked = false;
+      document.getElementById("wednesday").checked = false;
+      document.getElementById("thursday").checked = false;
+      document.getElementById("friday").checked = false;
+      document.getElementById("saturday").checked = false;
+      $("#sun")[0].value = "none ";
+      // $("#sun")[0].value = ;
+      $("#mon")[0].value = "none ";
+      $("#tue")[0].value = "none ";
+      $("#wed")[0].value = "none ";
+      $("#thu")[0].value = "none ";
+      $("#fri")[0].value = "none ";
+      $("#sat")[0].value = "none ";
+
+      $("#sunday").attr("disabled", true);
+      $("#monday").attr("disabled", true);
+      $("#tuesday").attr("disabled", true);
+      $("#wednesday").attr("disabled", true);
+      $("#thursday").attr("disabled", true);
+      $("#friday").attr("disabled", true);
+      $("#saturday").attr("disabled", true);
+      $("#sun").attr("disabled", true);
+      $("#mon").attr("disabled", true);
+      $("#tues").attr("disabled", true);
+      $("#wed").attr("disabled", true);
+      $("#thurs").attr("disabled", true);
+      $("#fri").attr("disabled", true);
+      $("#sat").attr("disabled", true);
+    } else {
+      $("#sunday").removeAttr("disabled");
+      $("#monday").removeAttr("disabled");
+      $("#tuesday").removeAttr("disabled");
+      $("#wednesday").removeAttr("disabled");
+      $("#thursday").removeAttr("disabled");
+      $("#friday").removeAttr("disabled");
+      $("#saturday").removeAttr("disabled");
+    }
+  }
 
   $(function () {
     enable_cb(); // this function will enable all the days
@@ -216,12 +304,19 @@ $(document).ready(function () {
       $("#thursday").attr("disabled", true);
       $("#friday").attr("disabled", true);
       $("#saturday").attr("disabled", true);
+      $("#sun").val("none").change();
       $("#sun").attr("disabled", true);
+      $("#mon").val("none").change();
       $("#mon").attr("disabled", true);
+      $("#tue").val("none").change();
       $("#tue").attr("disabled", true);
+      $("#wed").val("none").change();
       $("#wed").attr("disabled", true);
+      $("#thu").val("none").change();
       $("#thu").attr("disabled", true);
+      $("#fri").val("none").change();
       $("#fri").attr("disabled", true);
+      $("#sat").val("none").change();
       $("#sat").attr("disabled", true);
     }
   }
@@ -240,6 +335,7 @@ $(document).ready(function () {
   }
   function disable_cb1() {
     if (!this.checked) {
+      $("#sun").val("none").change();
       $("#sun").attr("disabled", true);
     }
   }
@@ -257,6 +353,7 @@ $(document).ready(function () {
   }
   function disable_cb2() {
     if (!this.checked) {
+      $("#mon").val("none").change();
       $("#mon").attr("disabled", true);
     }
   }
@@ -274,6 +371,7 @@ $(document).ready(function () {
   }
   function disable_cb3() {
     if (!this.checked) {
+      $("#tue").val("none").change();
       $("#tue").attr("disabled", true);
     }
   }
@@ -291,6 +389,7 @@ $(document).ready(function () {
   }
   function disable_cb4() {
     if (!this.checked) {
+      $("#wed").val("none").change();
       $("#wed").attr("disabled", true);
     }
   }
@@ -308,6 +407,7 @@ $(document).ready(function () {
   }
   function disable_cb5() {
     if (!this.checked) {
+      $("#thu").val("none").change();
       $("#thu").attr("disabled", true);
     }
   }
@@ -325,6 +425,7 @@ $(document).ready(function () {
   }
   function disable_cb6() {
     if (!this.checked) {
+      $("#fri").val("none").change();
       $("#fri").attr("disabled", true);
     }
   }
@@ -342,8 +443,8 @@ $(document).ready(function () {
   }
   function disable_cb7() {
     if (!this.checked) {
+      $("#sat").val("none").change();
       $("#sat").attr("disabled", true);
     }
   }
 });
-
